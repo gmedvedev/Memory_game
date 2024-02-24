@@ -43,12 +43,12 @@
       card.classList.add("card-open");
       card.toggleAttribute("disabled");
 
-      if (compList.value != [] && compList[0] !== card.getAttribute("id")) {
+      if (compList.value != [] && compList[0] != card.getAttribute("id")) {
         compList.push(card.getAttribute("id"));
         counter++;
       }
 
-      if (counter === 2) {
+      if (counter == 2) {
         compareCards(compList, victoryList);
       }
     });
@@ -87,14 +87,14 @@
 
     const valueA = cardA.textContent;
     const valueB = cardB.textContent;
-    if (valueA === valueB) {
+    if (valueA == valueB) {
       cardA.classList.add("card-has-pair");
       cardB.classList.add("card-has-pair");
       let delEl = victoryList.indexOf(Number(valueA));
       victoryList.splice(delEl, 1);
       delEl = victoryList.indexOf(Number(valueA));
       victoryList.splice(delEl, 1);
-      if (victoryList.length === 0) {
+      if (victoryList.length == 0) {
         endGameMessage(gameOver);
         clearInterval(start);
       }
@@ -126,11 +126,11 @@
     }
 
     timer.innerHTML = displayMinute + " : " + displaySec;
-    if (minute === 0 && sec === 0) {
+    if (minute == 0 && sec == 0) {
       gameOver = true;
     }
 
-    if (sec === 0) {
+    if (sec == 0) {
       --minute;
       sec = 60;
     }
@@ -147,11 +147,11 @@
       }
 
       timer.innerHTML = displayMinute + " : " + displaySec;
-      if (minute === 0 && sec === 0) {
+      if (minute == 0 && sec == 0) {
         gameOver = true;
       }
 
-      if (sec === 0) {
+      if (sec == 0) {
         --minute;
         sec = 60;
       }
@@ -171,7 +171,7 @@
   }
 
   // Настройки поля при первом запуске
-  if (sessionStorage.getItem("size") === null) {
+  if (sessionStorage.getItem("size") == null) {
     sessionStorage.setItem("size", "4");
     sessionStorage.setItem("timerMin", "1");
     sessionStorage.setItem("timerSec", "0");
